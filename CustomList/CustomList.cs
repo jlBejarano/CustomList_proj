@@ -173,6 +173,42 @@ namespace CustomList
             return newList;
         }
 
+        public MyList<T> Zip(MyList<T> list)
+        {
+            MyList<T> temp1 = new MyList<T>();
+            MyList<T> temp2 = new MyList<T>();
+            for (int i = 0; i <list.Count; i++)
+            {
+                temp1.Add(list[i]);
+            }
+            for (int i = 0; i < list.Length; i++)
+            {
+                temp2.Add(list[i]);
+            }
+            MyList<T> zipList = new MyList<T>();
+            int maxCount;
+            if (temp1.Count > temp2.Count)
+            {
+                maxCount = temp1.Count;
+            }
+            else
+            {
+                maxCount = temp2.Count;
+            }
+            for (int i = 0; i < maxCount; i++)
+            {
+                if (i < temp2.Count)
+                {
+                    zipList.Add(temp2[i]);
+                }
+                if (i < temp1.Count)
+                {
+                    zipList.Add(temp1[i]);
+                }
 
+            
+            }
+            return zipList;
+        }
     }
 }
