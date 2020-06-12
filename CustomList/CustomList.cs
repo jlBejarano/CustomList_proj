@@ -10,6 +10,7 @@ namespace CustomList
     public class MyList<T> : IEnumerable
     {
         private T[] items;
+        string stringOfLists;
         int count;
         public int Count
         {
@@ -75,6 +76,33 @@ namespace CustomList
             return userInput;
         }
 
+        public T this[int index] 
+        {
+            get
+            {
+                if (Count == 0 || index >= Count)
+                {
+                    throw new IndexOutOfRangeException("Out of range");
+                }
+                else
+                {
+                    return items[index];
+                }
+            }
+            set
+            {
+                if (Count == 0 || index >= Count)
+                {
+                    throw new IndexOutOfRangeException();
+                }
+                else
+                {
+                    items[index] = value;
+                }
+            }
+        }
+
+
         public IEnumerator GetEnumerator()
         {
             for (int i = 0; i < items.Length; i++)
@@ -106,6 +134,43 @@ namespace CustomList
                 }
                 Count--;
             }
+        }
+
+        public static MyList<T> operator +(MyList<T>l1, MyList<T>l2)
+        {
+            MyList<T> combinedList = new MyList<T>();
+            for (int i = 0; i < l1.Count; i++)
+            {
+                combinedList.Add(l1[i]);
+            }
+
+            for (int i = 0; i < l2.Count; i++)
+            {
+                combinedList.Add(l2[i]);
+            }
+            return combinedList;
+        }
+
+        public static MyList<T> operator -(MyList<T> l1, MyList<T> l2)
+        {
+            MyList<T> newList = new MyList<T>();
+            for (int i = 0; i < l1.Count; i++)
+            {
+                newList.Add(l1[i]);
+            }
+
+            for (int i = 0; i < newList.Count; i++)
+            {
+                for (int j = 0; j <l2.Count; j++)
+                {
+                    if (newList[i].Equals(l2[j]))
+                    {
+                        newList.Remove(l2[j]);
+                    }
+                }
+            }
+
+            return newList;
         }
     }
 }

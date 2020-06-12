@@ -396,6 +396,106 @@ namespace CustomListTesting
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod]
+        public void OverloadAdditionOfLists_CheckCount_TwoListOfIntegers()
+        {
+            // arange
+            MyList<int> myList = new MyList<int>();
+            MyList<int> myList1 = new MyList<int>();
+            MyList<int> combinedList = new MyList<int>();
+            int expected = 8;
+            int actual;
+
+            //act
+            myList.Add(5);
+            myList.Add(10);
+            myList.Add(15);
+            myList.Add(20);
+            myList1.Add(30);
+            myList1.Add(40);
+            myList1.Add(50);
+            myList1.Add(60);
+
+            combinedList = myList + myList1;
+
+            actual = combinedList.Count;
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void OverloadAdditionOfLists_CheckCount_TwoListsOfStrings()
+        {
+            MyList<string> myList = new MyList<string>();
+            MyList<string> myList1 = new MyList<string>();
+            MyList<string> combinedList = new MyList<string>();
+            int expected = 6;
+            int actual;
+
+            myList.Add("C");
+            myList.Add("O");
+            myList.Add("D");
+            myList1.Add("I");
+            myList1.Add("N");
+            myList1.Add("G");
+
+            combinedList = myList + myList1;
+
+            actual = combinedList.Count;
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void OverLoadSubtractionOfLists_CheckCount_TwoListOfStrings()
+        {
+            MyList<string> myList = new MyList<string>();
+            MyList<string> myList1 = new MyList<string>();
+            MyList<string> combinedList = new MyList<string>();
+            int expected = 2;
+            int actual;
+
+            myList.Add("C");
+            myList.Add("o");
+            myList.Add("d");
+            myList.Add("e");
+            myList1.Add("N");
+            myList1.Add("O");
+            myList1.Add("W");
+            myList1.Add("!");
+
+            combinedList = myList - myList1;
+
+            actual = combinedList.Count;
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void OverloadSubtractionOfLists_CheckCount_TwoListsOfIntegers()
+        {
+            MyList<int> myList = new MyList<int>();
+            MyList<int> myList1 = new MyList<int>();
+            MyList<int> combinedList = new MyList<int>();
+            int expected = 2;
+            int actual;
+
+            myList.Add(1);
+            myList.Add(2);
+            myList.Add(3);
+            myList1.Add(1);
+            myList1.Add(4);
+            myList1.Add(5);
+            myList1.Add(6);
+            myList1.Add(7);
+
+            combinedList = myList - myList1;
+
+            actual = combinedList.Count;
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
-}
+
