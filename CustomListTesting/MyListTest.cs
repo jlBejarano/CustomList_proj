@@ -527,6 +527,32 @@ namespace CustomListTesting
         }
 
         [TestMethod]
+        public void Zip_CheckCount_TwoListsOfStrings()
+        {
+            //arange
+            MyList<string> myList = new MyList<string>();
+            MyList<string> myList1 = new MyList<string>();
+            MyList<string> zipList = new MyList<string>();
+            int expected = 6;
+            int actual;
+
+            //act
+            myList.Add("A");
+            myList.Add("B");
+            myList.Add("C");
+            myList.Add("D");
+            myList.Add("E");
+            myList.Add("F");
+
+            zipList = myList.Zip(list);
+
+            actual = zipList.Count;
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(IndexOutOfRangeException))]
         public void Indexer_CheckForExceptionCode()
         {
