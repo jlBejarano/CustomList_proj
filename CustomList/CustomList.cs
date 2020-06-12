@@ -9,6 +9,7 @@ namespace CustomList
 {
     public class MyList<T> : IEnumerable
     {
+        private T[] listArray;
         private T[] items;
         string stringOfLists;
         int count;
@@ -75,26 +76,33 @@ namespace CustomList
             }
             return userInput;
         }
-        private T[] listArray;
-        public T this[int number] 
+        
+        public T this[int index] 
         {
             get
             {
-                if (number >= 0 && number < Count)
+                if (Count == 0 || index >= Count)
                 {
-                    return listArray[number];
+                    throw new IndexOutOfRangeException();
                 }
                 else
                 {
-                    throw new IndexOutOfRangeException("Out of range");
+                    return items[index];
                 }
             }
             set
             {
-                listArray[number] = value;
+               if (Count == 0 || index >= Count)
+                {
+                    throw new IndexOutOfRangeException();
+                }
+                else
+                {
+                    items[index] = value;
+                }
             }
         }
-        private T[] tempArray;
+        
 
 
         public IEnumerator GetEnumerator()
