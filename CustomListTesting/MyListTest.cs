@@ -496,6 +496,50 @@ namespace CustomListTesting
 
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void Zip_CheckCount_TwoListsOfIntegers()
+        {
+            //arrange
+            MyList<int> myList = new MyList<int>();
+            MyList<int> myList1 = new MyList<int>();
+            MyList<int> zipList = new MyList<int>();
+            int expected = 9;
+            int actual;
+
+            //act
+            myList.Add(1);
+            myList.Add(2);
+            myList.Add(3);
+            myList.Add(5);
+            myList1.Add(1);
+            myList1.Add(4);
+            myList1.Add(5);
+            myList1.Add(6);
+            myList1.Add(7);
+
+            zipList = myList.Zip(myList1);
+
+            actual = zipList.Count;
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(IndexOutOfRangeException))]
+        public void Indexer_CheckForExceptionCode()
+        {
+            MyList<int> myList = new MyList<int>();
+
+            myList.Add(13);
+            myList.Add(26);
+            myList.Add(46);
+            myList.Add(66);
+            myList.Add(96);
+
+            Console.WriteLine($"{myList[7]}");
+        }
     }
 }
 
