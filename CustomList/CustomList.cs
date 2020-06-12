@@ -75,32 +75,26 @@ namespace CustomList
             }
             return userInput;
         }
-
-        public T this[int index] 
+        private T[] listArray;
+        public T this[int number] 
         {
             get
             {
-                if (Count == 0 || index >= Count)
+                if (number >= 0 && number < Count)
                 {
-                    throw new IndexOutOfRangeException("Out of range");
+                    return listArray[number];
                 }
                 else
                 {
-                    return items[index];
+                    throw new IndexOutOfRangeException("Out of range");
                 }
             }
             set
             {
-                if (Count == 0 || index >= Count)
-                {
-                    throw new IndexOutOfRangeException();
-                }
-                else
-                {
-                    items[index] = value;
-                }
+                listArray[number] = value;
             }
         }
+        private T[] tempArray;
 
 
         public IEnumerator GetEnumerator()
@@ -181,7 +175,7 @@ namespace CustomList
             {
                 temp1.Add(list[i]);
             }
-            for (int i = 0; i < list.Length; i++)
+            for (int i = 0; i < listArray.Length; i++)
             {
                 temp2.Add(list[i]);
             }

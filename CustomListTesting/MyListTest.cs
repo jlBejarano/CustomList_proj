@@ -544,11 +544,36 @@ namespace CustomListTesting
             myList.Add("E");
             myList.Add("F");
 
-            zipList = myList.Zip(list);
+            zipList = myList.Zip(myList1);
 
             actual = zipList.Count;
 
             //assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Zip_CheckOrder_TwoListOfStrings()
+        {
+            MyList<string> myList = new MyList<string>();
+            MyList<string> myList1 = new MyList<string>();
+            MyList<string> zipList = new MyList<string>();
+            string expected = ("A");
+            string actual;
+
+            myList.Add("A");
+            myList.Add("B");
+            myList.Add("C");
+            myList.Add("D");
+            myList1.Add("Z");
+            myList1.Add("R");
+            myList1.Add("S");
+            myList1.Add("T");
+
+            zipList = myList.Zip(myList1);
+
+            actual = zipList[3];
+
             Assert.AreEqual(expected, actual);
         }
 
