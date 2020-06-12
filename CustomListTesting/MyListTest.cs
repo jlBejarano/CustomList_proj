@@ -184,7 +184,7 @@ namespace CustomListTesting
             myList.Add(6);
             myList.Add(7);
             myList.Add(8);
-            myList.add(9);
+            myList.Add(9);
             myList.Add(10);
             myList.Remove(5);
             actual = myList[6];

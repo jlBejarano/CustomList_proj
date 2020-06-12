@@ -40,5 +40,25 @@ namespace CustomList
             Capacity = 4;
             items = new T[Capacity];
         }
+        public void CheckCapacity()
+        {
+            if (Count >= Capacity)
+            {
+                Capacity = Capacity * 2;
+                T[] tempArray = new T[Capacity];
+                for (int i = 0; i < Count; i++)
+                {
+                    tempArray[i] = items[i];
+                }
+                items = tempArray;
+            }
+        }
+
+        public void Add(T item)
+        {
+            CheckCapacity();
+            items[Count] = item;
+            Count++;
+        }
     }
 }
